@@ -3,106 +3,543 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Louis & Emma - New Year's Eve Wedding</title>
+  <title>Louis & Emma | New Year's Eve Wedding</title>
+  <meta name="description" content="Join Louis & Emma for a New Year's Eve wedding celebration at Stirk House in Gisburn, Lancashire.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--surface-0); color: var(--text-primary); }
-
     :root {
-      --surface-0: #f5f5f5;
-      --surface-1: #e8e8e8;
-      --surface-2: #ffffff;
-      --text-primary: #1a1a1a;
-      --text-secondary: #666666;
-      --border: #d0d0d0;
+      --ivory: #f8f4ee;
+      --ivory-deep: #efe3d2;
+      --panel: rgba(255,255,255,0.72);
+      --panel-strong: rgba(255,255,255,0.9);
+      --ink: #1d1d1d;
+      --muted: #5d5d5d;
       --gold: #d4af37;
-      --gold-light: #e8c574;
-      --dark-blue: #1a1a2e;
-      --dark-blue-alt: #16213e;
-      --radius: 8px;
+      --gold-deep: #b78d1f;
+      --gold-soft: #e8d39d;
+      --navy: #1a1f2c;
+      --navy-deep: #121827;
+      --shadow: 0 22px 60px rgba(27, 26, 30, 0.15);
+      --border: rgba(24, 24, 24, 0.1);
+      --success: #2e7d32;
+      --success-bg: rgba(46,125,50,0.08);
+      --radius: 20px;
+      --container: 1120px;
     }
 
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --surface-0: #1a1a1a;
-        --surface-1: #2d2d2d;
-        --surface-2: #3a3a3a;
-        --text-primary: #f5f5f5;
-        --text-secondary: #b0b0b0;
-        --border: #444444;
-      }
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(212,175,55,0.18), transparent 35%),
+        linear-gradient(180deg, #f6f1ea 0%, #f9f6f2 100%);
+      color: var(--ink);
+      line-height: 1.6;
     }
 
-    header {
-      background: linear-gradient(135deg, var(--dark-blue) 0%, var(--dark-blue-alt) 100%);
-      padding: 3rem 2rem;
-      text-align: center;
-      border-bottom: 2px solid var(--gold);
-      color: var(--gold);
+    a { color: inherit; }
+
+    .container {
+      width: min(var(--container), calc(100% - 2rem));
+      margin: 0 auto;
     }
 
-    h1 { font-size: 2.5rem; font-weight: 500; margin-bottom: 0.5rem; }
-    .tagline { font-size: 1.1rem; color: var(--gold-light); margin-bottom: 1.5rem; letter-spacing: 1px; }
-
-    .venue-box {
-      background: rgba(212, 175, 55, 0.1);
-      border: 2px solid var(--gold);
-      border-radius: 12px;
-      padding: 1.5rem;
-      text-align: center;
-      margin: 1rem 0;
-      display: inline-block;
-    }
-
-    .venue-box h2 { font-size: 1.3rem; color: var(--gold); margin-bottom: 0.5rem; }
-    .venue-box p { font-size: 0.95rem; color: var(--gold-light); }
-
-    main { max-width: 680px; margin: 2rem auto; padding: 0 1.5rem; }
-
-    section { margin-bottom: 2.5rem; }
-    section h2 { font-size: 1.4rem; font-weight: 500; margin-bottom: 1rem; color: var(--text-primary); border-bottom: 2px solid var(--gold); padding-bottom: 0.5rem; }
-
-    /* Gallery Styles */
-    .gallery-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .gallery-item {
+    .hero {
       position: relative;
-      border-radius: 12px;
+      background:
+        linear-gradient(135deg, rgba(17,24,39,0.95) 0%, rgba(25,35,52,0.92) 100%),
+        url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+      color: #f4f1eb;
+      padding: 2.2rem 0 4rem;
       overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(14,19,30,0.2), rgba(14,19,30,0.72));
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 4rem;
+    }
+
+    .brand {
+      font-family: 'Cormorant Garamond', serif;
+      letter-spacing: 0.12em;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+    }
+
+    .nav {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: 0.8rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.82);
+    }
+
+    .nav a {
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nav a:hover { color: var(--gold-soft); }
+
+    .hero-content {
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      border: 1px solid rgba(212,175,55,0.55);
+      background: rgba(212,175,55,0.08);
+      padding: 0.7rem 1.2rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      margin-bottom: 1.4rem;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Cormorant Garamond', serif;
+      line-height: 0.95;
+      margin: 0;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .hero h1 {
+      font-size: clamp(3.2rem, 8vw, 6.8rem);
+      margin-bottom: 0.7rem;
+      color: #f6efe6;
+    }
+
+    .hero h2 {
+      font-size: clamp(1.2rem, 2.5vw, 2rem);
+      color: var(--gold-soft);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .hero-date {
+      display: inline-block;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 0.9rem 1.5rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-copy {
+      max-width: 670px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .cta-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .button,
+    .button-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 1.7rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
       cursor: pointer;
-      transition: transform 0.3s ease;
+      border: 1px solid transparent;
     }
 
-    .gallery-item:hover {
-      transform: scale(1.05);
+    .button {
+      background: linear-gradient(135deg, var(--gold) 0%, #e8d39d 100%);
+      color: var(--navy-deep);
+      box-shadow: 0 15px 35px rgba(212,175,55,0.2);
     }
 
-    .gallery-item img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
+    .button-secondary {
+      background: rgba(255,255,255,0.02);
+      color: #fff;
+      border-color: rgba(255,255,255,0.3);
+    }
+
+    .button:hover,
+    .button-secondary:hover {
+      transform: translateY(-2px);
+    }
+
+    main {
+      padding: 4rem 0 5rem;
+    }
+
+    .section-panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      padding: clamp(1.4rem, 3vw, 2.5rem);
+    }
+
+    section + section {
+      margin-top: 2.3rem;
+    }
+
+    .section-title {
+      font-size: clamp(2.3rem, 4vw, 3.4rem);
+      margin-bottom: 1.2rem;
+      color: var(--navy);
+      text-align: center;
+    }
+
+    .section-intro {
+      text-align: center;
+      color: var(--muted);
+      max-width: 760px;
+      margin: 0 auto 2rem;
+      font-size: 1.04rem;
+    }
+
+    .story-grid,
+    .info-grid,
+    .gallery-grid,
+    .accommodation-grid,
+    .rsvp-grid {
+      display: grid;
+      gap: 1.4rem;
+    }
+
+    .story-grid {
+      grid-template-columns: 1.3fr 1fr;
+      align-items: stretch;
+    }
+
+    .story-card,
+    .info-card,
+    .rsvp-card {
+      background: var(--panel-strong);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      box-shadow: 0 14px 28px rgba(19, 20, 25, 0.04);
+    }
+
+    .story-card h3,
+    .info-card h3,
+    .rsvp-card h3 {
+      color: var(--navy);
+      font-size: clamp(2rem, 3vw, 2.7rem);
+      margin-bottom: 1rem;
+    }
+
+    .story-card p,
+    .info-card p,
+    .rsvp-card p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .story-card .badge-row {
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      margin-top: 1.3rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      padding: 0.55rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(212,175,55,0.45);
+      background: rgba(212,175,55,0.08);
+      color: var(--navy-deep);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .detail-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .detail-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+      border-bottom: 1px solid rgba(24,24,24,0.07);
+      padding-bottom: 0.8rem;
+    }
+
+    .detail-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .detail-pill {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: rgba(212,175,55,0.12);
+      border: 1px solid rgba(212,175,55,0.3);
+      font-size: 1.1rem;
+    }
+
+    .detail-item strong {
       display: block;
-      border: 2px solid var(--gold);
-      border-radius: 12px;
+      margin-bottom: 0.15rem;
+      font-size: 0.82rem;
+      color: var(--gold-deep);
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
     }
 
-    /* Lightbox */
+    .detail-item span {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .info-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .info-card {
+      min-height: 100%;
+    }
+
+    .info-card .label {
+      display: inline-block;
+      color: var(--gold-deep);
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      font-size: 0.72rem;
+      font-weight: 700;
+      margin-bottom: 0.9rem;
+    }
+
+    .info-card .value {
+      font-size: 1.12rem;
+      color: var(--navy);
+      font-weight: 600;
+      margin-top: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .gallery-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .gallery-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      border: 1px solid rgba(20,20,20,0.08);
+      box-shadow: 0 14px 35px rgba(0,0,0,0.08);
+      cursor: pointer;
+      background: #ddd;
+      min-height: 320px;
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+
+    .gallery-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .gallery-card::after {
+      content: "View";
+      position: absolute;
+      inset: auto 1rem 1rem 1rem;
+      color: white;
+      text-align: center;
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.7rem 0.9rem;
+      background: rgba(14,19,30,0.42);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 999px;
+      backdrop-filter: blur(3px);
+    }
+
+    .accommodation-grid {
+      grid-template-columns: 1.2fr 1fr;
+    }
+
+    .venue-link {
+      display: inline-flex;
+      margin-top: 1rem;
+      align-items: center;
+      gap: 0.7rem;
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px solid rgba(17,24,39,0.2);
+      padding-bottom: 0.2rem;
+    }
+
+    .venue-link:hover {
+      color: var(--gold-deep);
+    }
+
+    .transport-list {
+      display: grid;
+      gap: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    .transport-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .transport-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: rgba(212,175,55,0.12);
+      border: 1px solid rgba(212,175,55,0.3);
+    }
+
+    .rsvp-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .rsvp-card {
+      padding: 2rem;
+    }
+
+    .success-message {
+      display: none;
+      padding: 1rem 1.1rem;
+      background: var(--success-bg);
+      border: 1px solid rgba(46,125,50,0.2);
+      border-radius: 12px;
+      color: var(--success);
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+    }
+
+    .success-message.show {
+      display: block;
+    }
+
+    form {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    label {
+      display: block;
+      color: var(--navy);
+      font-weight: 600;
+      margin-bottom: 0.45rem;
+      font-size: 0.9rem;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border-radius: 14px;
+      border: 1px solid rgba(27,31,44,0.12);
+      background: rgba(255,255,255,0.8);
+      color: var(--ink);
+      font: inherit;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(212,175,55,0.75);
+      box-shadow: 0 0 0 4px rgba(212,175,55,0.1);
+      outline: none;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .submit-row {
+      display: flex;
+      justify-content: flex-start;
+      margin-top: 0.5rem;
+    }
+
+    footer {
+      padding: 1.5rem 0 3rem;
+      text-align: center;
+      color: var(--muted);
+    }
+
     .lightbox {
       display: none;
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.95);
+      inset: 0;
+      background: rgba(7, 7, 10, 0.9);
       z-index: 1000;
       align-items: center;
       justify-content: center;
+      padding: 2rem;
     }
 
     .lightbox.active {
@@ -111,375 +548,279 @@
 
     .lightbox-content {
       position: relative;
-      max-width: 90%;
-      max-height: 90%;
+      width: min(94vw, 1000px);
     }
 
     .lightbox-image {
-      max-width: 100%;
-      max-height: 85vh;
-      border-radius: 12px;
+      display: block;
+      width: 100%;
+      max-height: 82vh;
+      object-fit: contain;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.04);
     }
 
     .lightbox-close {
       position: absolute;
-      top: 20px;
-      right: 30px;
-      color: var(--gold);
-      font-size: 40px;
+      top: -15px;
+      right: -10px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.06);
+      color: white;
+      font-size: 2rem;
       cursor: pointer;
-      z-index: 1001;
+      line-height: 1;
     }
 
-    .guest-section {
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      border-left: 4px solid var(--gold);
-    }
+    @media (max-width: 860px) {
+      .story-grid,
+      .info-grid,
+      .gallery-grid,
+      .accommodation-grid,
+      .field-grid {
+        grid-template-columns: 1fr;
+      }
 
-    .guest-section h3 { font-size: 1.1rem; font-weight: 500; margin-bottom: 0.8rem; color: var(--text-primary); }
-    .guest-section p { font-size: 0.95rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; }
+      .topbar {
+        flex-direction: column;
+        text-align: center;
+      }
 
-    .detail { display: flex; gap: 1rem; margin: 0.8rem 0; font-size: 0.95rem; }
-    .detail-label { font-weight: 500; color: var(--gold); min-width: 100px; }
-    .detail-value { color: var(--text-secondary); }
+      .nav {
+        justify-content: center;
+      }
 
-    .update-item {
-      background: var(--surface-1);
-      border-left: 4px solid var(--gold);
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 4px;
-    }
-
-    .update-date { font-size: 0.85rem; color: var(--gold); font-weight: 500; }
-    .update-title { font-size: 1rem; font-weight: 500; margin: 0.5rem 0; color: var(--text-primary); }
-    .update-text { font-size: 0.95rem; color: var(--text-secondary); }
-
-    .form-group {
-      margin-bottom: 1rem;
-    }
-
-    label {
-      display: block;
-      font-size: 0.95rem;
-      font-weight: 500;
-      margin-bottom: 0.5rem;
-      color: var(--text-primary);
-    }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 0.75rem;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      font-family: inherit;
-      font-size: 0.95rem;
-      background: var(--surface-2);
-      color: var(--text-primary);
-    }
-
-    input:focus, select:focus, textarea:focus {
-      outline: none;
-      border-color: var(--gold);
-      box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.15);
-    }
-
-    button {
-      background: var(--gold);
-      color: var(--dark-blue);
-      border: none;
-      padding: 0.75rem 1.5rem;
-      border-radius: var(--radius);
-      font-size: 0.95rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    button:hover { background: var(--gold-light); transform: translateY(-2px); }
-    button:active { transform: scale(0.98); }
-
-    footer { text-align: center; padding: 2rem 1.5rem; color: var(--text-secondary); font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 2rem; }
-
-    .countdown {
-      background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(232, 197, 116, 0.05));
-      border: 1px solid var(--gold);
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    .countdown-title { font-size: 1.1rem; color: var(--gold); font-weight: 500; margin-bottom: 1rem; }
-    .countdown-text { font-size: 0.95rem; color: var(--text-secondary); }
-
-    .new-year-badge {
-      display: inline-block;
-      background: var(--gold);
-      color: var(--dark-blue);
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      margin: 0.5rem;
-    }
-
-    .success-message {
-      display: none;
-      background: rgba(76, 175, 80, 0.1);
-      border: 1px solid #4CAF50;
-      color: #4CAF50;
-      padding: 1rem;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-
-    .success-message.show {
-      display: block;
-    }
-
-    .gallery-label {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      margin-top: 1rem;
+      .hero {
+        padding-top: 1.5rem;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Louis & Emma</h1>
-    <p class="tagline">✨ New Year's Eve Celebration ✨</p>
-    <div class="venue-box">
-      <h2>📍 Stirk House</h2>
-      <p>Gisburn, Lancashire</p>
-      <p style="margin-top: 0.5rem; font-size: 0.9rem;">December 31st, 2026</p>
+  <header class="hero">
+    <div class="container hero-inner">
+      <div class="topbar">
+        <div class="brand">Louis &amp; Emma</div>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="#story">Our Story</a>
+          <a href="#details">Details</a>
+          <a href="#stay">Stay</a>
+          <a href="#rsvp">RSVP</a>
+        </nav>
+      </div>
+
+      <div class="hero-content">
+        <div class="eyebrow">✨ New Year's Eve Wedding</div>
+        <h1>Louis &amp; Emma</h1>
+        <h2>Celebrating into 2027</h2>
+        <div class="hero-date">Thursday, 31 December 2026</div>
+        <p class="hero-copy">Join us at Stirk House, Gisburn for a beautiful evening of love, laughter, live music and midnight magic as we begin our next chapter together.</p>
+        <div class="cta-row">
+          <a class="button" href="#rsvp">RSVP Now</a>
+          <a class="button-secondary" href="#details">View Details</a>
+        </div>
+      </div>
     </div>
   </header>
 
   <main>
-    <!-- Countdown -->
-    <div class="countdown">
-      <div class="countdown-title">Celebrating into 2027 together</div>
-      <p class="countdown-text">Join us as we say goodbye to 2026 and ring in the new year with love, laughter, and celebration at the beautiful Stirk House.</p>
-      <div style="margin-top: 1rem;">
-        <span class="new-year-badge">🎆 New Year's Eve</span>
-        <span class="new-year-badge">💕 Love</span>
-        <span class="new-year-badge">🥂 Celebration</span>
-      </div>
+    <div class="container">
+      <section id="story" class="section-panel">
+        <h2 class="section-title">Our Celebration</h2>
+        <p class="section-intro">A dazzling New Year's Eve celebration in the Lancashire countryside, with heartfelt vows, a warm welcome, and a night of dancing into the new year.</p>
+
+        <div class="story-grid">
+          <article class="story-card">
+            <h3>Love, laughter &amp; midnight cheer</h3>
+            <p>We are so excited to celebrate our wedding with friends and family at the stunning Stirk House. The day begins with our ceremony at 1:00 PM, followed by a relaxed reception and a joyful evening of music, dancing, good food and champagne when the clock strikes midnight.</p>
+            <div class="badge-row">
+              <span class="badge">1:00 PM Ceremony</span>
+              <span class="badge">Live Music</span>
+              <span class="badge">Champagne Countdown</span>
+            </div>
+          </article>
+
+          <aside class="story-card">
+            <h3>At a glance</h3>
+            <div class="detail-list">
+              <div class="detail-item">
+                <div class="detail-pill">📅</div>
+                <div>
+                  <strong>Date</strong>
+                  <span>Thursday, 31 December 2026</span>
+                </div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-pill">📍</div>
+                <div>
+                  <strong>Venue</strong>
+                  <span>Stirk House, Gisburn, Lancashire</span>
+                </div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-pill">🎵</div>
+                <div>
+                  <strong>Evening</strong>
+                  <span>Live music, DJ, dancing, and a joyful midnight countdown</span>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="details" class="section-panel">
+        <h2 class="section-title">Event Details</h2>
+        <div class="info-grid">
+          <article class="info-card">
+            <div class="label">Ceremony</div>
+            <h3>1:00 PM</h3>
+            <p>We invite you to join us at the beginning of our celebration as we say our vows in the afternoon.</p>
+            <div class="value">Please aim to arrive 15 minutes early.</div>
+          </article>
+
+          <article class="info-card">
+            <div class="label">Reception</div>
+            <h3>Following the ceremony</h3>
+            <p>Enjoy a relaxed, elegant three-course wedding breakfast with family and friends in beautiful surroundings.</p>
+            <div class="value">A warm welcome, wonderful food and a celebratory atmosphere.</div>
+          </article>
+
+          <article class="info-card">
+            <div class="label">Evening</div>
+            <h3>7:00 PM onwards</h3>
+            <p>We continue the party into the evening with music, dancing, and the New Year countdown.</p>
+            <div class="value">Dress code: smart casual to elegant.</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-panel">
+        <h2 class="section-title">A Glimpse of the Venue</h2>
+        <div class="gallery-grid">
+          <div class="gallery-card" onclick="openLightbox('img1')">
+            <img src="https://raw.githubusercontent.com/Wild2026/Wedding/main/IMG_6498.png" id="img1" alt="Stirk House exterior" />
+          </div>
+          <div class="gallery-card" onclick="openLightbox('img2')">
+            <img src="https://raw.githubusercontent.com/Wild2026/Wedding/main/IMG_6499.png" id="img2" alt="Garden view at Stirk House" />
+          </div>
+          <div class="gallery-card" onclick="openLightbox('img3')">
+            <img src="https://raw.githubusercontent.com/Wild2026/Wedding/main/IMG_6500.png" id="img3" alt="Celebration interior space at Stirk House" />
+          </div>
+        </div>
+      </section>
+
+      <section id="stay" class="section-panel">
+        <h2 class="section-title">Accommodation &amp; Travel</h2>
+        <div class="accommodation-grid">
+          <article class="info-card">
+            <div class="label">Stay nearby</div>
+            <h3>Book early for the New Year weekend</h3>
+            <p>We recommend reserving accommodation in advance for the New Year’s Eve weekend. There are plenty of options around Gisburn and Clitheroe.</p>
+            <a class="venue-link" href="https://www.stirkhouse.co.uk/stay/" target="_blank" rel="noopener noreferrer">Visit Stirk House accommodation page →</a>
+          </article>
+
+          <article class="info-card">
+            <div class="label">Getting there</div>
+            <h3>Clitheroe by taxi</h3>
+            <div class="transport-list">
+              <div class="transport-item">
+                <div class="transport-icon">🚕</div>
+                <span>Clitheroe is approximately 10 minutes by taxi from the venue.</span>
+              </div>
+              <div class="transport-item">
+                <div class="transport-icon">🚗</div>
+                <span>Complimentary on-site parking is available for guests travelling by car.</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="rsvp" class="section-panel">
+        <h2 class="section-title">RSVP</h2>
+        <div class="rsvp-grid">
+          <div class="rsvp-card">
+            <div class="success-message" id="successMessage">Thank you! Your RSVP has been received and we can’t wait to celebrate with you.</div>
+            <p style="margin: 0 0 1.3rem; color: var(--muted);">We would love to celebrate with you. Please let us know your plans below.</p>
+
+            <form id="rsvpForm">
+              <div class="field-grid">
+                <div>
+                  <label for="name">Full Name *</label>
+                  <input type="text" id="name" name="name" placeholder="Your name" required>
+                </div>
+                <div>
+                  <label for="email">Email Address *</label>
+                  <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                </div>
+              </div>
+
+              <div class="field-grid">
+                <div>
+                  <label for="guests">Which celebration are you joining? *</label>
+                  <select id="guests" name="guests" required>
+                    <option value="">Select an option</option>
+                    <option value="day">Ceremony &amp; Reception</option>
+                    <option value="night">Evening Reception Only</option>
+                    <option value="both">Both day &amp; night</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="attendance">Will you be attending? *</label>
+                  <select id="attendance" name="attendance" required>
+                    <option value="">Select an option</option>
+                    <option value="yes">Yes, I’d love to attend</option>
+                    <option value="no">Sorry, I can’t make it</option>
+                    <option value="maybe">Still deciding</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label for="dietary">Dietary Requirements</label>
+                <textarea id="dietary" name="dietary" placeholder="Let us know if you have any dietary needs or allergies."></textarea>
+              </div>
+
+              <div>
+                <label for="message">Message for Louis &amp; Emma</label>
+                <textarea id="message" name="message" placeholder="Share any well wishes or a special note for us."></textarea>
+              </div>
+
+              <div class="submit-row">
+                <button class="button" type="submit">Submit RSVP</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
     </div>
-
-    <!-- Venue Gallery -->
-    <section>
-      <h2>Stirk House - Our Venue</h2>
-      <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">A beautiful historic venue in the heart of Lancashire's countryside, perfect for our special celebration.</p>
-      <div class="gallery-container">
-        <div class="gallery-item">
-          <img src="https://raw.githubusercontent.com/Wild2026/Wedding/main/IMG_6498.png" id="img1" alt="Stirk House exterior with ivy and celebration" onclick="openLightbox('img1')">
-          <div class="gallery-overlay"></div>
-        </div>
-        <div class="gallery-item">
-          <img src="https://raw.githubusercontent.com/Wild2026/Wedding/main/IMG_6499.png" id="img2" alt="Beautiful gardens with pink roses" onclick="openLightbox('img2')">
-          <div class="gallery-overlay"></div>
-        </div>
-        <div class="gallery-item">
-          <img src="https://raw.githubusercontent.com/Wild2026/Wedding/main/IMG_6500.png" id="img3" alt="Elegant celebration space with floral arch" onclick="openLightbox('img3')">
-          <div class="gallery-overlay"></div>
-        </div>
-      </div>
-      <p class="gallery-label">💡 Click images to view larger</p>
-    </section>
-
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-      <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-      <div class="lightbox-content">
-        <img class="lightbox-image" id="lightboxImage" src="" alt="">
-      </div>
-    </div>
-
-    <!-- Day Guests -->
-    <section>
-      <h2>Day Celebration</h2>
-      <div class="guest-section">
-        <h3>Welcome to the Ceremony & Reception</h3>
-        <p>Join us for a magical day as we celebrate our love and marriage at the beautiful Stirk House.</p>
-
-        <div class="detail">
-          <span class="detail-label">📅 Date</span>
-          <span class="detail-value">Thursday, December 31st, 2026</span>
-        </div>
-
-        <div class="detail">
-          <span class="detail-label">⏰ Ceremony</span>
-          <span class="detail-value">1:00 PM</span>
-        </div>
-
-        <div class="detail">
-          <span class="detail-label">🍽️ Reception</span>
-          <span class="detail-value">Immediately following with 3-course wedding breakfast</span>
-        </div>
-
-        <div class="detail">
-          <span class="detail-label">📍 Venue</span>
-          <span class="detail-value">Stirk House, Gisburn, Lancashire</span>
-        </div>
-
-        <p style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-secondary);">Please arrive 15 minutes early. Complimentary parking available on site.</p>
-      </div>
-    </section>
-
-    <!-- Accommodation -->
-    <section>
-      <h2>Accommodation</h2>
-      <div class="guest-section">
-        <h3>Stay Nearby</h3>
-        <p>We recommend booking accommodation early for the New Year's Eve weekend. There are plenty of options in and around Gisburn and Clitheroe for guests travelling to celebrate with us.</p>
-
-        <div class="detail">
-          <span class="detail-label">🏨 Book</span>
-          <span class="detail-value">Please reserve early through your preferred hotel or accommodation booking platform.</span>
-        </div>
-
-        <div class="detail">
-          <span class="detail-label">🚕 Taxi</span>
-          <span class="detail-value">Clitheroe is approximately 10 minutes by taxi from the venue.</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Night Guests -->
-    <section>
-      <h2>Evening Reception</h2>
-      <div class="guest-section">
-        <h3>Ring in the New Year With Us</h3>
-        <p>Join us for an evening of celebration, dancing, and champagne as we welcome 2027 together.</p>
-
-        <div class="detail">
-          <span class="detail-label">📅 Date</span>
-          <span class="detail-value">Thursday, December 31st, 2026</span>
-        </div>
-
-        <div class="detail">
-          <span class="detail-label">⏰ Time</span>
-          <span class="detail-value">7:00 PM onwards</span>
-        </div>
-
-        <div class="detail">
-          <span class="detail-label">🎉 Midnight</span>
-          <span class="detail-value">Champagne reception and New Year countdown!</span>
-        </div>
-
-        <div class="detail">
-          <span class="detail-label">🎵 Entertainment</span>
-          <span class="detail-value">Live music, DJ, and dancing all night</span>
-        </div>
-
-        <p style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-secondary);">Dress code: Smart casual to elegant. Full bar throughout the evening.</p>
-      </div>
-    </section>
-
-    <!-- Updates -->
-    <section>
-      <h2>Updates & News</h2>
-
-      <div class="update-item">
-        <div class="update-date">September 20, 2026</div>
-        <div class="update-title">Welcome to Our Wedding Website!</div>
-        <div class="update-text">We're thrilled to share our New Year's Eve wedding with you. Please RSVP below to let us know if you'll be joining in the celebration.</div>
-      </div>
-
-      <div class="update-item">
-        <div class="update-date">Now Available</div>
-        <div class="update-title">Accommodation Information</div>
-        <div class="update-text">We recommend booking accommodation early, and Clitheroe is around 10 minutes by taxi from the venue.</div>
-      </div>
-
-      <div class="update-item">
-        <div class="update-date">Coming Soon</div>
-        <div class="update-title">Gift Registry & Honeymoon Fund</div>
-        <div class="update-text">Information on how to support us as we start our married life together will be coming soon.</div>
-      </div>
-
-      <div class="update-item">
-        <div class="update-date">Coming Soon</div>
-        <div class="update-title">Special New Year's Surprises</div>
-        <div class="update-text">We have some exciting plans to ring in 2027 with our guests. Stay tuned for more details!</div>
-      </div>
-    </section>
-
-    <!-- RSVP Form -->
-    <section>
-      <h2>RSVP</h2>
-      <div class="guest-section">
-        <div class="success-message" id="successMessage">
-          ✅ Thank you! Your RSVP has been received. We can't wait to celebrate with you!
-        </div>
-        <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Please let us know if you'll be joining us on this special evening. We'd absolutely love to celebrate with you!</p>
-
-        <form id="rsvpForm" method="POST" action="https://formspree.io/f/YOUR_FORM_ID">
-          <div class="form-group">
-            <label for="name">Your Name *</label>
-            <input type="text" id="name" name="name" placeholder="Full name" required>
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email Address *</label>
-            <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
-          </div>
-
-          <div class="form-group">
-            <label for="guests">Which celebration are you joining? *</label>
-            <select id="guests" name="guests" required>
-              <option value="">-- Select an option --</option>
-              <option value="day">Day Celebration (Ceremony & Reception)</option>
-              <option value="night">Evening Reception Only</option>
-              <option value="both">Both (Day & Night) - The Full Celebration!</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="attendance">Will you be joining us? *</label>
-            <select id="attendance" name="attendance" required>
-              <option value="">-- Select an option --</option>
-              <option value="yes">Yes, count me in! 🎉</option>
-              <option value="no">Sorry, I can't make it</option>
-              <option value="maybe">Still deciding</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="dietary">Dietary Requirements or Allergies</label>
-            <textarea id="dietary" name="dietary" rows="3" placeholder="Let us know if you have any dietary needs"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="message">Message for Louis & Emma</label>
-            <textarea id="message" name="message" rows="3" placeholder="Share your well-wishes with us!"></textarea>
-          </div>
-
-          <button type="submit">Submit RSVP</button>
-        </form>
-      </div>
-    </section>
   </main>
 
   <footer>
-    <p>We're so excited to share this special New Year's Eve with you! For any questions, please get in touch.</p>
-    <p style="margin-top: 0.5rem;">Much love,<br>Louis & Emma 💕</p>
+    <div class="container">
+      We are delighted to celebrate this special moment with you.<br>
+      Much love, Louis &amp; Emma 💕
+    </div>
   </footer>
 
+  <div class="lightbox" id="lightbox" aria-label="Image viewer">
+    <div class="lightbox-content">
+      <button class="lightbox-close" aria-label="Close image" onclick="closeLightbox()">×</button>
+      <img class="lightbox-image" id="lightboxImage" src="" alt="Expanded venue image">
+    </div>
+  </div>
+
   <script>
-    function openLightbox(imgId) {
-      const img = document.getElementById(imgId);
+    function openLightbox(id) {
+      const img = document.getElementById(id);
       const lightbox = document.getElementById('lightbox');
       const lightboxImage = document.getElementById('lightboxImage');
       lightboxImage.src = img.src;
-      lightboxImage.classList.add('active');
       lightbox.classList.add('active');
     }
 
@@ -487,24 +828,25 @@
       document.getElementById('lightbox').classList.remove('active');
     }
 
-    document.getElementById('lightbox').addEventListener('click', function(e) {
-      if (e.target === this) {
-        closeLightbox();
-      }
+    document.getElementById('lightbox').addEventListener('click', function (event) {
+      if (event.target === this) closeLightbox();
     });
 
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        closeLightbox();
-      }
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') closeLightbox();
     });
 
-    document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-      setTimeout(() => {
-        document.getElementById('successMessage').classList.add('show');
-        document.getElementById('rsvpForm').style.display = 'none';
-      }, 500);
-    });
+    const rsvpForm = document.getElementById('rsvpForm');
+    if (rsvpForm) {
+      rsvpForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const successMessage = document.getElementById('successMessage');
+        if (successMessage) {
+          successMessage.classList.add('show');
+        }
+        rsvpForm.style.display = 'none';
+      });
+    }
   </script>
 </body>
 </html>
