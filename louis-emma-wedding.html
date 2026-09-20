@@ -886,7 +886,7 @@
           </div>
 
           <div class="rsvp-form-panel">
-            <form id="rsvp-form" novalidate>
+            <form id="rsvp-form" action="https://formspree.io/f/xgavaadw" method="POST" novalidate>
               <div class="field-grid">
                 <div class="field">
                   <label for="guest-name">Full name</label>
@@ -1074,17 +1074,51 @@
           submittedAt: new Date().toISOString()
         };
 
-        localStorage.setItem('louis-emma-rsvp', JSON.stringify(payload));
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
+        setStatus('Sending your RSVP...', 'success');
 
-        if (message) {
-          saveGuestbook(guestName, message, 'With love');
-          addGuestbookEntry(guestName, message, 'With love');
-        }
+        const formData = new FormData(form);
 
-        setStatus('Thank you, ' + guestName + '! Your RSVP has been saved successfully.', 'success');
-        form.reset();
-        guestsInput.value = '1';
-        validateForm();
+        fetch(form.action, {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json'
+          },
+          body: formData
+        })
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error('Form could not be sent');
+          }
+
+          localStorage.setItem('louis-emma-rsvp', JSON.stringify(payload));
+
+          if (message) {
+            saveGuestbook(guestName, message, 'With love');
+            addGuestbookEntry(guestName, message, 'With love');
+          }
+
+          setStatus('Thank you, ' + guestName + '! Your RSVP has been sent successfully.', 'success');
+          form.reset();
+          guestsInput.value = '1';
+          validateForm();
+          submitButton.textContent = 'Send RSVP';
+        })
+        .catch(function () {
+          localStorage.setItem('louis-emma-rsvp', JSON.stringify(payload));
+
+          if (message) {
+            saveGuestbook(guestName, message, 'With love');
+            addGuestbookEntry(guestName, message, 'With love');
+          }
+
+          setStatus('Your RSVP was saved locally, but the server was unavailable. Please try again later.', 'error');
+          form.reset();
+          guestsInput.value = '1';
+          validateForm();
+          submitButton.textContent = 'Send RSVP';
+        });
       });
 
       loadGuestbook();
