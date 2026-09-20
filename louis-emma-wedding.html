@@ -279,15 +279,15 @@
       <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">A beautiful historic venue in the heart of Lancashire's countryside, perfect for our special celebration.</p>
       <div class="gallery-container">
         <div class="gallery-item">
-          <img src="https://raw.githubusercontent.com/Wild2026/wedding/main/IMG_6500.png" id="img1" alt="Stirk House exterior with ivy and celebration" onclick="openLightbox('img1')">
+          <img src="https://raw.githubusercontent.com/Wild2026/Wedding/main/IMG_6498.png" id="img1" alt="Stirk House exterior with ivy and celebration" onclick="openLightbox('img1')">
           <div class="gallery-overlay"></div>
         </div>
         <div class="gallery-item">
-          <img src="https://raw.githubusercontent.com/Wild2026/wedding/main/IMG_6500.png" id="img2" alt="Beautiful gardens with pink roses" onclick="openLightbox('img2')">
+          <img src="https://raw.githubusercontent.com/Wild2026/Wedding/main/IMG_6499.png" id="img2" alt="Beautiful gardens with pink roses" onclick="openLightbox('img2')">
           <div class="gallery-overlay"></div>
         </div>
         <div class="gallery-item">
-          <img src="https://raw.githubusercontent.com/Wild2026/wedding/main/IMG_6500.png" id="img3" alt="Elegant celebration space with floral arch" onclick="openLightbox('img3')">
+          <img src="https://raw.githubusercontent.com/Wild2026/Wedding/main/IMG_6500.png" id="img3" alt="Elegant celebration space with floral arch" onclick="openLightbox('img3')">
           <div class="gallery-overlay"></div>
         </div>
       </div>
@@ -455,14 +455,12 @@
   </footer>
 
   <script>
-    // Note: Replace image URLs with actual image paths after uploading
-    // For now, placeholder images are shown
-
     function openLightbox(imgId) {
       const img = document.getElementById(imgId);
       const lightbox = document.getElementById('lightbox');
       const lightboxImage = document.getElementById('lightboxImage');
       lightboxImage.src = img.src;
+      lightboxImage.classList.add('active');
       lightbox.classList.add('active');
     }
 
@@ -470,24 +468,19 @@
       document.getElementById('lightbox').classList.remove('active');
     }
 
-    // Close lightbox when clicking outside image
     document.getElementById('lightbox').addEventListener('click', function(e) {
       if (e.target === this) {
         closeLightbox();
       }
     });
 
-    // Close with Escape key
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
         closeLightbox();
       }
     });
 
-    // Form submission
     document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-      // Formspree will handle the submission automatically
-      // Show success message after form is submitted
       setTimeout(() => {
         document.getElementById('successMessage').classList.add('show');
         document.getElementById('rsvpForm').style.display = 'none';
