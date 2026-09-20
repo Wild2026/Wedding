@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Louis & Emma - New Year's Eve Wedding</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--surface-0); color: var(--text-primary); }
+
+    :root {
+      --surface-0: #f5f5f5;
+      --surface-1: #e8e8e8;
+      --surface-2: #ffffff;
+      --text-primary: #1a1a1a;
+      --text-secondary: #666666;
+      --border: #d0d0d0;
+      --gold: #d4af37;
+      --gold-light: #e8c574;
+      --dark-blue: #1a1a2e;
+      --dark-blue-alt: #16213e;
+      --radius: 8px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --surface-0: #1a1a1a;
+        --surface-1: #2d2d2d;
+        --surface-2: #3a3a3a;
+        --text-primary: #f5f5f5;
+        --text-secondary: #b0b0b0;
+        --border: #444444;
+      }
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--dark-blue) 0%, var(--dark-blue-alt) 100%);
+      padding: 3rem 2rem;
+      text-align: center;
+      border-bottom: 2px solid var(--gold);
+      color: var(--gold);
+    }
+
+    h1 { font-size: 2.5rem; font-weight: 500; margin-bottom: 0.5rem; }
+    .tagline { font-size: 1.1rem; color: var(--gold-light); margin-bottom: 1.5rem; letter-spacing: 1px; }
+
+    .venue-box {
+      background: rgba(212, 175, 55, 0.1);
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      margin: 1rem 0;
+      display: inline-block;
+    }
+
+    .venue-box h2 { font-size: 1.3rem; color: var(--gold); margin-bottom: 0.5rem; }
+    .venue-box p { font-size: 0.95rem; color: var(--gold-light); }
+
+    main { max-width: 680px; margin: 2rem auto; padding: 0 1.5rem; }
+
+    section { margin-bottom: 2.5rem; }
+    section h2 { font-size: 1.4rem; font-weight: 500; margin-bottom: 1rem; color: var(--text-primary); border-bottom: 2px solid var(--gold); padding-bottom: 0.5rem; }
+
+    /* Gallery Styles */
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    .lightbox-image {
+      max-width: 100%;
+      max-height: 85vh;
+      border-radius: 12px;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: var(--gold);
+      font-size: 40px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .guest-section {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid var(--gold);
+    }
+
+    .guest-section h3 { font-size: 1.1rem; font-weight: 500; margin-bottom: 0.8rem; color: var(--text-primary); }
+    .guest-section p { font-size: 0.95rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; }
+
+    .detail { display: flex; gap: 1rem; margin: 0.8rem 0; font-size: 0.95rem; }
+    .detail-label { font-weight: 500; color: var(--gold); min-width: 100px; }
+    .detail-value { color: var(--text-secondary); }
+
+    .update-item {
+      background: var(--surface-1);
+      border-left: 4px solid var(--gold);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 4px;
+    }
+
+    .update-date { font-size: 0.85rem; color: var(--gold); font-weight: 500; }
+    .update-title { font-size: 1rem; font-weight: 500; margin: 0.5rem 0; color: var(--text-primary); }
+    .update-text { font-size: 0.95rem; color: var(--text-secondary); }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 0.95rem;
+      background: var(--surface-2);
+      color: var(--text-primary);
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.15);
+    }
+
+    button {
+      background: var(--gold);
+      color: var(--dark-blue);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    button:hover { background: var(--gold-light); transform: translateY(-2px); }
+    button:active { transform: scale(0.98); }
+
+    footer { text-align: center; padding: 2rem 1.5rem; color: var(--text-secondary); font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 2rem; }
+
+    .countdown {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(232, 197, 116, 0.05));
+      border: 1px solid var(--gold);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .countdown-title { font-size: 1.1rem; color: var(--gold); font-weight: 500; margin-bottom: 1rem; }
+    .countdown-text { font-size: 0.95rem; color: var(--text-secondary); }
+
+    .new-year-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--dark-blue);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin: 0.5rem;
+    }
+
+    .success-message {
+      display: none;
+      background: rgba(76, 175, 80, 0.1);
+      border: 1px solid #4CAF50;
+      color: #4CAF50;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .success-message.show {
+      display: block;
+    }
+
+    .gallery-label {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Louis & Emma</h1>
+    <p class="tagline">✨ New Year's Eve Celebration ✨</p>
+    <div class="venue-box">
+      <h2>📍 Stirk House</h2>
+      <p>Gisburn, Lancashire</p>
+      <p style="margin-top: 0.5rem; font-size: 0.9rem;">December 31st, 2026</p>
+    </div>
+  </header>
+
+  <main>
+    <!-- Countdown -->
+    <div class="countdown">
+      <div class="countdown-title">Celebrating into 2027 together</div>
+      <p class="countdown-text">Join us as we say goodbye to 2026 and ring in the new year with love, laughter, and celebration at the beautiful Stirk House.</p>
+      <div style="margin-top: 1rem;">
+        <span class="new-year-badge">🎆 New Year's Eve</span>
+        <span class="new-year-badge">💕 Love</span>
+        <span class="new-year-badge">🥂 Celebration</span>
+      </div>
+    </div>
+
+    <!-- Venue Gallery -->
+    <section>
+      <h2>Stirk House - Our Venue</h2>
+      <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">A beautiful historic venue in the heart of Lancashire's countryside, perfect for our special celebration.</p>
+      <div class="gallery-container">
+        <div class="gallery-item">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" id="img1" alt="Stirk House exterior with ivy and celebration space" onclick="openLightbox('img1')">
+          <div class="gallery-overlay"></div>
+        </div>
+        <div class="gallery-item">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" id="img2" alt="Beautiful gardens with pink roses" onclick="openLightbox('img2')">
+          <div class="gallery-overlay"></div>
+        </div>
+        <div class="gallery-item">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" id="img3" alt="Elegant celebration space with floral arch" onclick="openLightbox('img3')">
+          <div class="gallery-overlay"></div>
+        </div>
+      </div>
+      <p class="gallery-label">💡 Click images to view larger</p>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+      <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+      <div class="lightbox-content">
+        <img class="lightbox-image" id="lightboxImage" src="" alt="">
+      </div>
+    </div>
+
+    <!-- Day Guests -->
+    <section>
+      <h2>Day Celebration</h2>
+      <div class="guest-section">
+        <h3>Welcome to the Ceremony & Reception</h3>
+        <p>Join us for a magical day as we celebrate our love and marriage at the beautiful Stirk House.</p>
+
+        <div class="detail">
+          <span class="detail-label">📅 Date</span>
+          <span class="detail-value">Tuesday, December 31st, 2026</span>
+        </div>
+
+        <div class="detail">
+          <span class="detail-label">⏰ Ceremony</span>
+          <span class="detail-value">2:00 PM</span>
+        </div>
+
+        <div class="detail">
+          <span class="detail-label">🍽️ Reception</span>
+          <span class="detail-value">Immediately following with 3-course wedding breakfast</span>
+        </div>
+
+        <div class="detail">
+          <span class="detail-label">📍 Venue</span>
+          <span class="detail-value">Stirk House, Gisburn, Lancashire</span>
+        </div>
+
+        <p style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-secondary);">Please arrive 15 minutes early. Complimentary parking available on site.</p>
+      </div>
+    </section>
+
+    <!-- Night Guests -->
+    <section>
+      <h2>Evening Reception</h2>
+      <div class="guest-section">
+        <h3>Ring in the New Year With Us</h3>
+        <p>Join us for an evening of celebration, dancing, and champagne as we welcome 2027 together.</p>
+
+        <div class="detail">
+          <span class="detail-label">📅 Date</span>
+          <span class="detail-value">Tuesday, December 31st, 2026</span>
+        </div>
+
+        <div class="detail">
+          <span class="detail-label">⏰ Time</span>
+          <span class="detail-value">7:00 PM onwards</span>
+        </div>
+
+        <div class="detail">
+          <span class="detail-label">🎉 Midnight</span>
+          <span class="detail-value">Champagne reception and New Year countdown!</span>
+        </div>
+
+        <div class="detail">
+          <span class="detail-label">🎵 Entertainment</span>
+          <span class="detail-value">DJ and dancing all night</span>
+        </div>
+
+        <p style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-secondary);">Dress code: Smart casual to elegant. Full bar throughout the evening.</p>
+      </div>
+    </section>
+
+    <!-- Updates -->
+    <section>
+      <h2>Updates & News</h2>
+
+      <div class="update-item">
+        <div class="update-date">September 20, 2026</div>
+        <div class="update-title">Welcome to Our Wedding Website!</div>
+        <div class="update-text">We're thrilled to share our New Year's Eve wedding with you. Please RSVP below to let us know if you'll be joining in the celebration.</div>
+      </div>
+
+      <div class="update-item">
+        <div class="update-date">Coming Soon</div>
+        <div class="update-title">Accommodation Information</div>
+        <div class="update-text">We'll be sharing details about recommended hotels and nearby accommodation options in the Gisburn area shortly.</div>
+      </div>
+
+      <div class="update-item">
+        <div class="update-date">Coming Soon</div>
+        <div class="update-title">Gift Registry & Honeymoon Fund</div>
+        <div class="update-text">Information on how to support us as we start our married life together will be coming soon.</div>
+      </div>
+
+      <div class="update-item">
+        <div class="update-date">Coming Soon</div>
+        <div class="update-title">Special New Year's Surprises</div>
+        <div class="update-text">We have some exciting plans to ring in 2027 with our guests. Stay tuned for more details!</div>
+      </div>
+    </section>
+
+    <!-- RSVP Form -->
+    <section>
+      <h2>RSVP</h2>
+      <div class="guest-section">
+        <div class="success-message" id="successMessage">
+          ✅ Thank you! Your RSVP has been received. We can't wait to celebrate with you!
+        </div>
+        <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Please let us know if you'll be joining us on this special evening. We'd absolutely love to celebrate with you!</p>
+
+        <form id="rsvpForm" method="POST" action="https://formspree.io/f/YOUR_FORM_ID">
+          <div class="form-group">
+            <label for="name">Your Name *</label>
+            <input type="text" id="name" name="name" placeholder="Full name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="guests">Which celebration are you joining? *</label>
+            <select id="guests" name="guests" required>
+              <option value="">-- Select an option --</option>
+              <option value="day">Day Celebration (Ceremony & Reception)</option>
+              <option value="night">Evening Reception Only</option>
+              <option value="both">Both (Day & Night) - The Full Celebration!</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="attendance">Will you be joining us? *</label>
+            <select id="attendance" name="attendance" required>
+              <option value="">-- Select an option --</option>
+              <option value="yes">Yes, count me in! 🎉</option>
+              <option value="no">Sorry, I can't make it</option>
+              <option value="maybe">Still deciding</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="dietary">Dietary Requirements or Allergies</label>
+            <textarea id="dietary" name="dietary" rows="3" placeholder="Let us know if you have any dietary needs"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message for Louis & Emma</label>
+            <textarea id="message" name="message" rows="3" placeholder="Share your well-wishes with us!"></textarea>
+          </div>
+
+          <button type="submit">Submit RSVP</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>We're so excited to share this special New Year's Eve with you! For any questions, please get in touch.</p>
+    <p style="margin-top: 0.5rem;">Much love,<br>Louis & Emma 💕</p>
+  </footer>
+
+  <script>
+    // Note: Replace image URLs with actual image paths after uploading
+    // For now, placeholder images are shown
+
+    function openLightbox(imgId) {
+      const img = document.getElementById(imgId);
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImage = document.getElementById('lightboxImage');
+      lightboxImage.src = img.src;
+      lightbox.classList.add('active');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+    }
+
+    // Close lightbox when clicking outside image
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeLightbox();
+      }
+    });
+
+    // Close with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      }
+    });
+
+    // Form submission
+    document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+      // Formspree will handle the submission automatically
+      // Show success message after form is submitted
+      setTimeout(() => {
+        document.getElementById('successMessage').classList.add('show');
+        document.getElementById('rsvpForm').style.display = 'none';
+      }, 500);
+    });
+  </script>
+</body>
+</html>
