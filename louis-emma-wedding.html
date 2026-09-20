@@ -10,29 +10,904 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{--night:#10172b;--night-soft:#18213a;--cream:#f8f4ec;--paper:#fffdf8;--ink:#1d2435;--muted:#6d7180;--gold:#d9b86c;--gold-light:#f0dca6;--line:rgba(217,184,108,.28);--serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',Arial,sans-serif;--shadow:0 24px 70px rgba(16,23,43,.12)}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);line-height:1.65}a{color:inherit;text-decoration:none}.container{width:min(1120px,calc(100% - 40px));margin:auto}
-    .hero{min-height:760px;position:relative;overflow:hidden;color:#fff;background:linear-gradient(120deg,rgba(9,15,31,.96),rgba(16,23,43,.72)),url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=2200&q=85') center/cover}.hero:after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 12% 20%,var(--gold-light) 0 1px,transparent 2px),radial-gradient(circle at 84% 26%,var(--gold) 0 1px,transparent 2px),radial-gradient(circle at 67% 72%,#fff 0 1px,transparent 2px),radial-gradient(circle at 30% 80%,var(--gold) 0 1px,transparent 2px);background-size:210px 180px,260px 220px,190px 200px,240px 230px;opacity:.55}.hero .container{position:relative;z-index:1}.topbar{display:flex;align-items:center;justify-content:space-between;padding:30px 0;border-bottom:1px solid rgba(255,255,255,.22)}.brand{font:600 28px var(--serif);letter-spacing:.04em}.brand:before{content:'✦';font:14px var(--sans);color:var(--gold);margin-right:10px}.nav{display:flex;gap:28px;font-size:12px;letter-spacing:.13em;text-transform:uppercase}.nav a{opacity:.85;transition:.2s}.nav a:hover{color:var(--gold-light);opacity:1}.hero-content{max-width:750px;padding:145px 0 120px}.eyebrow,.food-label{color:var(--gold-light);font-size:12px;font-weight:700;letter-spacing:.26em;text-transform:uppercase}.hero h1{font:500 clamp(72px,12vw,144px)/.78 var(--serif);letter-spacing:-.04em;margin:28px 0 20px}.hero h2{color:var(--gold-light);font:400 clamp(28px,4vw,46px)/1.1 var(--serif);margin:0 0 30px}.hero-date{font-size:13px;letter-spacing:.18em;text-transform:uppercase}.hero-copy{color:rgba(255,255,255,.8);font-size:17px;max-width:560px;margin:27px 0 35px}.actions{display:flex;gap:14px;flex-wrap:wrap}.button{display:inline-block;padding:14px 26px;border:1px solid var(--gold);background:var(--gold);color:var(--night);font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;transition:.25s}.button:hover{background:var(--gold-light);border-color:var(--gold-light);transform:translateY(-2px)}.button-outline{background:transparent;color:#fff}.button-outline:hover{color:var(--night)}
-    .ribbon{background:var(--gold);color:var(--night);padding:22px 0}.ribbon-inner{display:flex;justify-content:space-between;align-items:center;text-align:center}.ribbon span{display:block;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase}.ribbon strong{display:block;font:600 25px var(--serif);letter-spacing:.04em}.ribbon .star{font-size:22px}
-    main{padding:92px 0}.panel{margin-bottom:100px}.section-heading{text-align:center;max-width:690px;margin:0 auto 45px}.kicker{color:var(--gold-dark);font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase}.section-title{font:500 clamp(42px,6vw,68px)/.95 var(--serif);margin:12px 0 18px;color:var(--night)}.intro{color:var(--muted);font-size:17px;margin:0 auto;max-width:610px}.story-grid,.details-grid{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:18px}.card{background:var(--paper);padding:34px;box-shadow:var(--shadow);border:1px solid rgba(16,23,43,.05)}.card:first-child{background:var(--night);color:#fff}.card h3{font:600 32px/1 var(--serif);margin:0 0 18px;color:var(--gold-dark)}.card:first-child h3{color:var(--gold-light)}.card p{color:var(--muted);margin:0}.card:first-child p{color:rgba(255,255,255,.75)}.card strong{color:var(--ink)}.card:first-child strong{color:var(--gold-light)}
-    .details-grid{grid-template-columns:repeat(3,1fr)}.details-grid .card h3{font-size:40px}.details-grid .card{min-height:190px}.food{position:relative;background:var(--night);color:#fff;text-align:center;padding:70px 25px;overflow:hidden}.food:before{content:'✦';position:absolute;color:rgba(217,184,108,.13);font-size:300px;line-height:1;top:-80px;left:50%;transform:translateX(-50%)}.food>*{position:relative}.food .section-title{color:#fff}.food p{color:rgba(255,255,255,.72);max-width:590px;margin:20px auto}.coming{display:inline-block;border:1px solid var(--line);color:var(--gold-light);font-size:11px;letter-spacing:.15em;padding:7px 14px;text-transform:uppercase}
-    .gallery{display:grid;grid-template-columns:1.5fr 1fr 1fr;grid-auto-rows:220px;gap:14px}.gallery figure{margin:0;overflow:hidden;position:relative;background:var(--night)}.gallery figure:first-child{grid-row:span 2}.gallery img{width:100%;height:100%;display:block;object-fit:cover;transition:.4s}.gallery figure:hover img{transform:scale(1.05);opacity:.86}.gallery figcaption{position:absolute;bottom:12px;left:14px;color:#fff;font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-shadow:0 1px 4px #000}
-    .rsvp-wrap{display:grid;grid-template-columns:.8fr 1.2fr;background:var(--night);box-shadow:var(--shadow)}.rsvp-intro{padding:55px;color:#fff}.rsvp-intro .section-title{color:#fff}.rsvp-intro p{color:rgba(255,255,255,.7)}.rsvp-form{background:var(--paper);padding:45px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}label{display:block;color:var(--ink);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}input,select,textarea{width:100%;border:1px solid #ddd8cd;background:#fff;padding:13px 14px;margin-top:7px;font:inherit;color:var(--ink)}textarea{min-height:90px;resize:vertical}.field-full{grid-column:1/-1}.form-submit{margin-top:22px}.message{display:none;padding:13px;margin-top:18px;font-size:14px}.success{background:#e8f3e9;color:#275b35}.error{background:#fce9e7;color:#7d2922}.message.show{display:block}
-    footer{background:var(--night);color:#fff;text-align:center;padding:55px 20px}footer .monogram{font:500 42px var(--serif);color:var(--gold-light);margin-bottom:10px}footer p{color:rgba(255,255,255,.65);margin:0}
-    @media(max-width:760px){.container{width:min(100% - 28px,600px)}.hero{min-height:680px}.topbar{align-items:flex-start}.nav{gap:10px;font-size:10px;flex-wrap:wrap;justify-content:flex-end}.brand{font-size:23px}.hero-content{padding:120px 0 80px}.hero h1{font-size:76px}.ribbon-inner{gap:10px}.ribbon strong{font-size:19px}.story-grid,.details-grid,.rsvp-wrap{grid-template-columns:1fr}.story-grid .card:first-child{grid-column:auto}.panel{margin-bottom:72px}.gallery{grid-template-columns:1fr 1fr;grid-auto-rows:170px}.gallery figure:first-child{grid-row:auto;grid-column:span 2}.rsvp-intro,.rsvp-form{padding:32px 24px}.form-grid{grid-template-columns:1fr}.field-full{grid-column:auto}}
+    :root {
+      --night: #10172b;
+      --night-soft: #18213a;
+      --cream: #f8f4ec;
+      --paper: #fffdf8;
+      --ink: #1d2435;
+      --muted: #6d7180;
+      --gold: #d9b86c;
+      --gold-dark: #ad8f4b;
+      --gold-light: #f0dca6;
+      --line: rgba(217, 184, 108, 0.28);
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'DM Sans', Arial, sans-serif;
+      --shadow: 0 24px 60px rgba(16, 23, 43, 0.15);
+      --radius: 22px;
+      --max-width: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.65;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(100% - 32px, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 760px;
+      color: #fff;
+      background:
+        linear-gradient(120deg, rgba(9, 15, 31, 0.92), rgba(16, 23, 43, 0.72)),
+        url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      overflow: hidden;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 28px;
+      gap: 24px;
+    }
+
+    .brand {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: none;
+      color: #f8efe0;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .nav a {
+      position: relative;
+      transition: color 0.2s ease;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 100%;
+      height: 1px;
+      background: var(--gold-light);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.2s ease;
+    }
+
+    .nav a:hover::after,
+    .nav a:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .hero-content {
+      display: grid;
+      place-items: center;
+      text-align: center;
+      min-height: 640px;
+      padding: 60px 0 80px;
+    }
+
+    .eyebrow {
+      color: var(--gold-light);
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 0.76rem;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(4rem, 9vw, 9rem);
+      line-height: 0.9;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: none;
+    }
+
+    h1 span {
+      display: inline-block;
+      font-size: 0.8em;
+      margin: 0 0.1em;
+      color: var(--gold-light);
+    }
+
+    .hero-date {
+      margin-top: 18px;
+      font-size: clamp(1.02rem, 2vw, 1.45rem);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 36px;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 52px;
+      padding: 0 28px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.14);
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--night);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.34);
+      color: #fff;
+    }
+
+    .ribbon {
+      background: var(--gold);
+      color: var(--night);
+      padding: 22px 0;
+    }
+
+    .ribbon-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      gap: 18px;
+    }
+
+    .ribbon span {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-bottom: 8px;
+    }
+
+    .ribbon strong {
+      font-size: clamp(1.05rem, 2.3vw, 1.5rem);
+      font-weight: 700;
+    }
+
+    .ribbon .star {
+      font-size: 1.6rem;
+      color: rgba(16, 23, 43, 0.8);
+    }
+
+    main {
+      padding: 92px 0 40px;
+    }
+
+    .panel {
+      margin-bottom: 110px;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 42px;
+    }
+
+    .kicker {
+      color: var(--gold-dark);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      line-height: 0.95;
+      font-weight: 600;
+      color: var(--night);
+    }
+
+    .intro {
+      max-width: 620px;
+      margin: 18px auto 0;
+      font-size: 1.08rem;
+      color: var(--muted);
+    }
+
+    .story-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .story-copy p {
+      margin: 0 0 18px;
+      font-size: 1.06rem;
+      color: var(--muted);
+    }
+
+    .story-copy p:last-child {
+      margin-bottom: 0;
+    }
+
+    .story-card {
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.78), rgba(255,255,255,0.92));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .story-card img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.7);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 34px 28px 28px;
+      box-shadow: 0 18px 35px rgba(16, 23, 43, 0.05);
+    }
+
+    .card h3 {
+      margin: 0 0 12px;
+      font-family: var(--serif);
+      font-size: clamp(2.1rem, 3vw, 3rem);
+      line-height: 0.9;
+      color: var(--night);
+    }
+
+    .card .meta {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--gold-dark);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.01rem;
+    }
+
+    .food {
+      position: relative;
+      background:
+        linear-gradient(135deg, rgba(9,15,31,0.92), rgba(16,23,43,0.7)),
+        url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+      color: #fff;
+      text-align: center;
+      border-radius: 38px;
+      padding: 80px 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .food-label {
+      display: inline-block;
+      margin-bottom: 18px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      color: var(--gold-light);
+    }
+
+    .food .section-title {
+      color: #fff;
+    }
+
+    .coming {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 22px;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      color: rgba(255, 255, 255, 0.8);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.76rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 14px;
+      grid-auto-rows: 220px;
+    }
+
+    .gallery-grid figure {
+      position: relative;
+      margin: 0;
+      overflow: hidden;
+      border-radius: 22px;
+      background: var(--night);
+      box-shadow: 0 18px 34px rgba(16,23,43,0.1);
+    }
+
+    .gallery-grid figure:first-child {
+      grid-row: span 2;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+
+    .gallery-grid figure:hover img {
+      transform: scale(1.04);
+    }
+
+    .rsvp-wrap {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 0;
+      background: var(--night);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .rsvp-intro {
+      padding: 58px 44px;
+      background: linear-gradient(180deg, rgba(22,32,55,0.96), rgba(16,23,43,0.9));
+      color: #fff;
+    }
+
+    .rsvp-intro .section-title {
+      color: #fff;
+      margin-bottom: 18px;
+    }
+
+    .rsvp-intro p {
+      margin: 0;
+      color: rgba(255,255,255,0.8);
+      font-size: 1rem;
+    }
+
+    .rsvp-meta {
+      display: grid;
+      gap: 20px;
+      margin-top: 34px;
+    }
+
+    .rsvp-meta-item {
+      border-top: 1px solid rgba(255,255,255,0.14);
+      padding-top: 16px;
+    }
+
+    .rsvp-meta-item strong {
+      display: block;
+      color: var(--gold-light);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      margin-bottom: 6px;
+    }
+
+    .rsvp-form-panel {
+      background: var(--paper);
+      padding: 38px 34px;
+    }
+
+    form {
+      display: grid;
+      gap: 18px;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field label {
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      border: 1px solid rgba(16, 23, 43, 0.12);
+      border-radius: 14px;
+      background: #fff;
+      padding: 14px 16px;
+      font: inherit;
+      color: var(--ink);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      outline: none;
+      border-color: rgba(217,184,108,0.8);
+      box-shadow: 0 0 0 3px rgba(217, 184, 108, 0.12);
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .submit-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .submit-note {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .btn-submit {
+      border: none;
+      min-width: 180px;
+      background: var(--gold);
+      color: var(--night);
+      cursor: pointer;
+    }
+
+    .btn-submit:disabled {
+      cursor: not-allowed;
+      opacity: 0.55;
+      box-shadow: none;
+    }
+
+    .form-status {
+      min-height: 24px;
+      margin-top: 8px;
+      font-weight: 600;
+    }
+
+    .form-status.success {
+      color: #1d7c56;
+    }
+
+    .form-status.error {
+      color: #a13d3d;
+    }
+
+    footer {
+      background: var(--night);
+      color: #fff;
+      text-align: center;
+      padding: 58px 20px;
+    }
+
+    footer .monogram {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 4vw, 3.8rem);
+      line-height: 1;
+      color: var(--gold-light);
+      margin-bottom: 12px;
+    }
+
+    footer p {
+      margin: 0;
+      color: rgba(255,255,255,0.8);
+      font-size: 1.02rem;
+    }
+
+    @media (max-width: 860px) {
+      .story-layout,
+      .rsvp-wrap,
+      .details-grid,
+      .field-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .gallery-grid figure:first-child {
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        min-height: 680px;
+      }
+
+      .topbar {
+        align-items: flex-start;
+      }
+
+      .nav {
+        gap: 10px;
+        font-size: 0.62rem;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .brand {
+        font-size: 1.9rem;
+      }
+
+      .ribbon-inner {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid figure:first-child {
+        grid-column: auto;
+      }
+
+      .submit-row {
+        align-items: stretch;
+      }
+
+      .btn-submit,
+      .btn {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
-  <header class="hero" id="top"><div class="container"><div class="topbar"><a class="brand" href="#top">Louis &amp; Emma</a><nav class="nav" aria-label="Main navigation"><a href="#story">Our story</a><a href="#details">Details</a><a href="#food">Menu</a><a href="#rsvp">RSVP</a></nav></div><div class="hero-content"><div class="eyebrow">A New Year's Eve wedding</div><h1>Louis<br>&amp; Emma</h1><h2>Celebrating into 2027</h2><div class="hero-date">Thursday, 31 December 2026 · Stirk House, Gisburn</div><p class="hero-copy">Join us for a day of heartfelt vows, candlelit celebrations and a midnight toast to our forever.</p><div class="actions"><a class="button" href="#rsvp">RSVP now</a><a class="button button-outline" href="#details">Explore the day</a></div></div></div></header>
-  <div class="ribbon"><div class="container ribbon-inner"><div><span>The date</span><strong>31 December 2026</strong></div><div class="star">✦</div><div><span>The place</span><strong>Stirk House</strong></div></div></div>
-  <main><div class="container">
-    <section id="story" class="panel"><div class="section-heading"><div class="kicker">With love</div><h2 class="section-title">Our celebration</h2><p class="intro">A winter wedding in the Lancashire countryside, filled with candlelight, wonderful food, music and the people we love most.</p></div><div class="story-grid"><article class="card"><h3>Love, laughter &amp; midnight magic</h3><p>We cannot wait to welcome you to Stirk House as we begin a new chapter together—and a brand-new year—with our favourite people.</p></article><article class="card"><h3>At a glance</h3><p><strong>Date</strong><br>Thursday, 31 December 2026<br><br><strong>Venue</strong><br>Stirk House, Gisburn</p></article><article class="card"><h3>The evening</h3><p><strong>7:00 PM onwards</strong><br>Live music, dancing and a champagne countdown into 2027.</p></article></div></section>
-    <section id="details" class="panel"><div class="section-heading"><div class="kicker">The plan</div><h2 class="section-title">A day to remember</h2></div><div class="details-grid"><article class="card"><h3>1:00 PM</h3><p><strong>The ceremony</strong><br>Please arrive 15 minutes early for our vows.</p></article><article class="card"><h3>Afternoon</h3><p><strong>Wedding breakfast</strong><br>A relaxed three-course meal with family and friends.</p></article><article class="card"><h3>7:00 PM</h3><p><strong>Evening reception</strong><br>Smart casual to elegant. Music, dancing and midnight magic.</p></article></div></section>
-    <section id="food" class="panel"><div class="food"><div class="food-label">Wedding breakfast</div><h2 class="section-title">Something delicious</h2><span class="coming">Menu coming October 2026</span><p>Our menu will be shared soon. We will have thoughtful choices for every guest—please let us know about any dietary requirements when you RSVP.</p></div></section>
-    <section class="panel"><div class="section-heading"><div class="kicker">The setting</div><h2 class="section-title">A glimpse of Stirk House</h2><p class="intro">A beautiful country house, made for a winter celebration.</p></div><div class="gallery"><figure><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1200&q=85" alt="Elegant wedding table setting" loading="lazy"><figcaption>Celebrate</figcaption></figure><figure><img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=800&q=85" alt="Wedding flowers and table details" loading="lazy"><figcaption>Gather</figcaption></figure><figure><img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=800&q=85" alt="Warmly lit wedding venue" loading="lazy"><figcaption>Dance</figcaption></figure></div></section>
-    <section id="rsvp" class="panel"><div class="rsvp-wrap"><div class="rsvp-intro"><div class="kicker">We hope you can join us</div><h2 class="section-title">RSVP</h2><p>Please reply by 31 October 2026. We are so looking forward to celebrating together.</p></div><form class="rsvp-form" id="rsvpForm"><div class="form-grid"><label>Name<input name="name" required autocomplete="name" placeholder="Your name"></label><label>Email<input name="email" type="email" required autocomplete="email" placeholder="you@example.com"></label><label>Will you be joining us?<select name="attendance" required><option value="">Please choose…</option><option>Joyfully accepts</option><option>Regretfully declines</option></select></label><label>Party size<select name="partySize" id="partySize"><option>1</option><option>2</option><option>3</option><option>4</option></select></label><label class="field-full">Dietary requirements or a note<textarea name="message" placeholder="Tell us anything we should know"></textarea></label></div><button class="button form-submit" type="submit">Send RSVP</button><div class="message success" id="success" aria-live="polite">Thank you! Your RSVP has been received.</div><div class="message error" id="error" aria-live="polite">Please complete the required fields before sending.</div></form></div></section>
-  </div></main>
-  <footer><div class="monogram">L &amp; E</div><p>We are so excited to celebrate this special moment with you.<br>Much love, Louis &amp; Emma ♡</p></footer>
-  <script>document.getElementById('rsvpForm').addEventListener('submit',function(e){e.preventDefault();var form=e.currentTarget,success=document.getElementById('success'),error=document.getElementById('error');if(!form.checkValidity()){error.classList.add('show');success.classList.remove('show');form.reportValidity();return}error.classList.remove('show');success.classList.add('show');form.reset();});</script>
+  <header class="hero" id="top">
+    <div class="container">
+      <div class="topbar">
+        <a class="brand" href="#top">Louis &amp; Emma</a>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="#story">Our story</a>
+          <a href="#details">Details</a>
+          <a href="#food">Food</a>
+          <a href="#rsvp">RSVP</a>
+        </nav>
+      </div>
+
+      <div class="hero-content">
+        <div>
+          <div class="eyebrow">You’re invited</div>
+          <h1>Louis <span>&amp;</span> Emma</h1>
+          <div class="hero-date">31 December 2026 • Stirk House, Gisburn</div>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#rsvp">RSVP now</a>
+            <a class="btn btn-secondary" href="#details">See the plan</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="ribbon">
+    <div class="container ribbon-inner">
+      <div>
+        <span>The date</span>
+        <strong>31 December 2026</strong>
+      </div>
+      <div class="star">✦</div>
+      <div>
+        <span>The place</span>
+        <strong>Stirk House</strong>
+      </div>
+      <div class="star">✦</div>
+      <div>
+        <span>The celebration</span>
+        <strong>Gisburn, Lancashire</strong>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <div class="container">
+      <section id="story" class="panel">
+        <div class="section-heading">
+          <div class="kicker">With love</div>
+          <h2 class="section-title">Our celebration</h2>
+          <p class="intro">A winter wedding in the Lancashire countryside, sharing good food, heartfelt toasts, and a night to remember with the people we love most.</p>
+        </div>
+
+        <div class="story-layout">
+          <div class="story-copy">
+            <p>From early days spent dreaming big to the quiet moments that made us feel at home, we’ve built a life filled with laughter, adventure, and the kind of love that keeps growing.</p>
+            <p>On 31 December 2026, we’ll gather at Stirk House to celebrate the start of a new chapter, surrounded by our favourite people in a place that feels warm, beautiful, and wonderfully us.</p>
+            <p>Expect a cosy winter wedding, a candlelit evening, delicious food, and plenty of dancing as the clock turns towards midnight.</p>
+          </div>
+          <div class="story-card">
+            <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=80" alt="Couple walking together outside during golden hour">
+          </div>
+        </div>
+      </section>
+
+      <section id="details" class="panel">
+        <div class="section-heading">
+          <div class="kicker">The plan</div>
+          <h2 class="section-title">A day to remember</h2>
+        </div>
+
+        <div class="details-grid">
+          <article class="card">
+            <div class="meta">12:30 pm</div>
+            <h3>Ceremony</h3>
+            <p>We’ll begin with our wedding ceremony in the elegant surroundings of Stirk House, followed by refreshments and a warm welcome from everyone.</p>
+          </article>
+
+          <article class="card">
+            <div class="meta">2:00 pm</div>
+            <h3>Wedding breakfast</h3>
+            <p>A relaxed and celebratory meal with seasonal dishes, sparkling drinks, and plenty of time to enjoy the company of our guests.</p>
+          </article>
+
+          <article class="card">
+            <div class="meta">7:30 pm</div>
+            <h3>Evening party</h3>
+            <p>As the night unfolds, we’ll move into dancing, speeches, and toast the New Year with the music, lights, and joy we’ve been dreaming of.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="food" class="panel">
+        <div class="food">
+          <div class="food-label">Wedding breakfast</div>
+          <h2 class="section-title">Something delicious</h2>
+          <div class="coming">Menu coming October 2026</div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="section-heading">
+          <div class="kicker">The setting</div>
+          <h2 class="section-title">A glimpse of Stirk House</h2>
+          <p class="intro">A beautiful country house, made for winter weddings, candlelight, and unforgettable nights with the people we love most.</p>
+        </div>
+
+        <div class="gallery-grid" aria-label="Stirk House gallery">
+          <figure>
+            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80" alt="Elegant wedding venue exterior in winter light">
+          </figure>
+          <figure>
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80" alt="Luxury wedding dining table">
+          </figure>
+          <figure>
+            <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=900&q=80" alt="Decorated wedding table detail">
+          </figure>
+          <figure>
+            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=80" alt="Sparkling festive champagne glasses">
+          </figure>
+          <figure>
+            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=80" alt="Decorated wedding invitation and stationery">
+          </figure>
+        </div>
+      </section>
+
+      <section id="rsvp" class="panel">
+        <div class="rsvp-wrap">
+          <div class="rsvp-intro">
+            <div class="kicker">We hope you can join us</div>
+            <h2 class="section-title">RSVP</h2>
+            <p>Please reply by 31 October 2026. We’d love to celebrate this special moment with you.</p>
+
+            <div class="rsvp-meta">
+              <div class="rsvp-meta-item">
+                <strong>Venue</strong>
+                Stirk House, Gisburn
+              </div>
+              <div class="rsvp-meta-item">
+                <strong>Dress code</strong>
+                Smart festive / winter formal
+              </div>
+              <div class="rsvp-meta-item">
+                <strong>Contact</strong>
+                We’ll be in touch with any final details.
+              </div>
+            </div>
+          </div>
+
+          <div class="rsvp-form-panel">
+            <form id="rsvp-form" novalidate>
+              <div class="field-grid">
+                <div class="field">
+                  <label for="guest-name">Full name</label>
+                  <input id="guest-name" name="guest-name" type="text" placeholder="Your name" required>
+                </div>
+
+                <div class="field">
+                  <label for="attending">Will you attend?</label>
+                  <select id="attending" name="attending" required>
+                    <option value="">Select an option</option>
+                    <option value="yes">Joyfully attending</option>
+                    <option value="no">Regretfully declining</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field-grid">
+                <div class="field">
+                  <label for="guests">Number of guests</label>
+                  <input id="guests" name="guests" type="number" min="1" max="4" value="1" placeholder="1">
+                </div>
+
+                <div class="field">
+                  <label for="dietary">Dietary requirements</label>
+                  <input id="dietary" name="dietary" type="text" placeholder="Optional">
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="message">Message to the couple</label>
+                <textarea id="message" name="message" placeholder="We’re so excited to celebrate with you..."></textarea>
+              </div>
+
+              <div class="submit-row">
+                <div class="submit-note">Please reply by 31 October 2026.</div>
+                <button class="btn btn-submit" id="submit-button" type="submit" disabled>Send RSVP</button>
+              </div>
+
+              <div id="form-status" class="form-status" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="monogram">L &amp; E</div>
+    <p>We are so excited to celebrate this special moment with you.<br>Much love, Louis &amp; Emma ♡</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('rsvp-form');
+      const nameInput = document.getElementById('guest-name');
+      const attendingInput = document.getElementById('attending');
+      const guestsInput = document.getElementById('guests');
+      const submitButton = document.getElementById('submit-button');
+      const formStatus = document.getElementById('form-status');
+
+      function setStatus(message, type) {
+        formStatus.textContent = message;
+        formStatus.className = 'form-status ' + type;
+      }
+
+      function validateForm() {
+        const guestName = nameInput.value.trim();
+        const attending = attendingInput.value;
+        const guests = Number(guestsInput.value) || 0;
+
+        const valid = Boolean(guestName) && attending && (attending === 'no' || guests >= 1);
+        submitButton.disabled = !valid;
+      }
+
+      [nameInput, attendingInput, guestsInput].forEach(function (element) {
+        element.addEventListener('input', validateForm);
+        element.addEventListener('change', validateForm);
+      });
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const guestName = nameInput.value.trim();
+        const attending = attendingInput.value;
+        const guests = Number(guestsInput.value) || 1;
+
+        if (!guestName) {
+          setStatus('Please tell us your name before sending your RSVP.', 'error');
+          nameInput.focus();
+          return;
+        }
+
+        if (!attending) {
+          setStatus('Please confirm whether you can attend.', 'error');
+          attendingInput.focus();
+          return;
+        }
+
+        if (attending === 'yes' && guests < 1) {
+          setStatus('Please choose at least one guest for your RSVP.', 'error');
+          guestsInput.focus();
+          return;
+        }
+
+        const payload = {
+          guestName: guestName,
+          attending: attending,
+          guests: attending === 'yes' ? guests : 0,
+          dietary: document.getElementById('dietary').value.trim(),
+          message: document.getElementById('message').value.trim(),
+          submittedAt: new Date().toISOString()
+        };
+
+        localStorage.setItem('louis-emma-rsvp', JSON.stringify(payload));
+        setStatus('Thank you, ' + guestName + '! Your RSVP has been saved successfully.', 'success');
+        form.reset();
+        guestsInput.value = '1';
+        validateForm();
+      });
+
+      validateForm();
+    });
+  </script>
 </body>
 </html>
