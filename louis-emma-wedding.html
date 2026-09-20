@@ -523,7 +523,7 @@
 
             <p style="margin:0 0 1.3rem; color:var(--muted)">Please enter your details below. You can RSVP for your full party and add multiple guests.</p>
 
-            <form id="rsvpForm" method="POST" action="https://formspree.io/f/YOUR_FORM_ID">
+            <form id="rsvpForm" method="POST" action="https://formspree.io/f/xgavaadw">
               <div class="field-grid">
                 <div>
                   <label for="name">Main contact name *</label>
@@ -676,16 +676,9 @@
       const form = event.currentTarget;
       const formData = new FormData(form);
       const action = form.getAttribute('action') || '';
-      const isPlaceholder = action.includes('YOUR_FORM_ID');
 
       successMessage.classList.remove('show');
       errorMessage.classList.remove('show');
-
-      if (isPlaceholder) {
-        form.style.display = 'none';
-        successMessage.classList.add('show');
-        return;
-      }
 
       try {
         const response = await fetch(action, {
